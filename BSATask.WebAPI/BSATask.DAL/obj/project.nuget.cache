@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "reSB8Fp9u555FEj8xrI2xt7c5CtzljkhztTNoHgMa8G7hbfUBT/yG0dKIYuVZj9gOZd/TB4NSosqFlJvCji+TA==",
+  "success": true,
+  "projectFilePath": "E:\\Library\\AcademyBinary\\AcademiBinary 2023\\Projects\\project-structure\\BSATask.WebAPI\\BSATask.DAL\\BSATask.DAL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\chuch\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
