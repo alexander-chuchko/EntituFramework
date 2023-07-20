@@ -27,8 +27,8 @@ namespace BSATask.WebAPI.ServiceExtensions
             services.AddAutoMapper(cfg =>
             {
                 cfg.AddProfile<ProjectProfile>();
-                cfg.AddProfile<TeamProfile>();
                 cfg.AddProfile<TaskProfile>();
+                cfg.AddProfile<TeamProfile>();
                 cfg.AddProfile<UserProfile>();
             },
             Assembly.GetExecutingAssembly());

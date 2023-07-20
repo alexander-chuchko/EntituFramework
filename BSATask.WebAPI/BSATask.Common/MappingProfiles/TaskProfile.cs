@@ -4,9 +4,9 @@
     {
         public TaskProfile()
         {
-            CreateMap<DAL.Entities.Team, DTO.TeamDTO>();
+            CreateMap<DAL.Entities.Task, DTO.TaskDTO>();
 
-            CreateMap<DTO.TeamDTO, DAL.Entities.Team>();
+            CreateMap<DTO.TaskDTO, DAL.Entities.Task>();
         }
     }
 }
