@@ -21,21 +21,12 @@ namespace BSATask.Common.Sevices
         public IEnumerable<TaskDTO> GetTasks()
         {
             IEnumerable<TaskDTO> tasksDTO = null;
-            try
-            {
 
-                var tasks = _unitOfWork.Tasks.GetAll<DAL.Entities.Task>();
-                tasksDTO = _mapper.Map<IEnumerable<TaskDTO>>(tasks);
-            }
-            catch (Exception ex)
-            { 
-            
-            }
-
+            var tasks = _unitOfWork.Tasks.GetAll<DAL.Entities.Task>();
+            tasksDTO = _mapper.Map<IEnumerable<TaskDTO>>(tasks);
 
             return tasksDTO;
         }
-
 
         public TaskDTO GetTaskById(int id)
         {
@@ -56,6 +47,7 @@ namespace BSATask.Common.Sevices
             {
                 var task = _mapper.Map<DAL.Entities.Task>(taskDTO);
                 _unitOfWork.Tasks.Insert<DAL.Entities.Task>(task);
+                _unitOfWork.Commit();
             }
         }
 
@@ -66,6 +58,7 @@ namespace BSATask.Common.Sevices
             {
                 var task = _mapper.Map<DAL.Entities.Task>(taskDTO);
                 _unitOfWork.Tasks.Update<DAL.Entities.Task>(task);
+                _unitOfWork.Commit();
             }
         }
 
@@ -75,6 +68,7 @@ namespace BSATask.Common.Sevices
             if (task != null)
             {
                 _unitOfWork.Tasks.Delete<DAL.Entities.Task>(id);
+                _unitOfWork.Commit();
             }
         }
     }

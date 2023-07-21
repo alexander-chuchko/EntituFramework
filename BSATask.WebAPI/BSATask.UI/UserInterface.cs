@@ -216,7 +216,7 @@ namespace BSATask.UI
                 {
                     Console.WriteLine($"\t{nameof(task.Id)} : {task.Id}\n\t" +
                         $"{nameof(task.ProjectId)} : {task.ProjectId}\n\t" +
-                        $"{nameof(task.PerformerId)} : {task.PerformerId}" +
+                        $"{nameof(task.UserId)} : {task.UserId}" +
                         $"{nameof(task.Name)} : {task.Name}\n\t" +
                         $"{nameof(task.Description)} : {task.Description}\n\t" +
                         $"{nameof(task.State)} : {task.State}\n\t" +
@@ -248,7 +248,7 @@ namespace BSATask.UI
                 {
                     Console.WriteLine($"\t{nameof(tasks.Id)} : {tasks.Id}\n\t" +
                         $"{nameof(tasks.ProjectId)} : {tasks.ProjectId}\n\t" +
-                        $"{nameof(tasks.PerformerId)} : {tasks.PerformerId}" +
+                        $"{nameof(tasks.UserId)} : {tasks.UserId}" +
                         $"{nameof(tasks.Name)} : {tasks.Name}\n\t" +
                         $"{nameof(tasks.Description)} : {tasks.Description}\n\t" +
                         $"{nameof(tasks.State)} : {tasks.State}\n\t"+

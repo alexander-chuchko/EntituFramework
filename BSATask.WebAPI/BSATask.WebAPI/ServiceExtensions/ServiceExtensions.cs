@@ -5,7 +5,7 @@ using System.Reflection;
 using BSATask.Common.Interface;
 using BSATask.Common.Sevices;
 using BSATask.Common.MappingProfiles;
-
+using BSATask.DAL.Context;
 
 namespace BSATask.WebAPI.ServiceExtensions
 {
@@ -14,8 +14,8 @@ namespace BSATask.WebAPI.ServiceExtensions
         public static void RegisterCustomServices(this IServiceCollection services)
         {
             services.AddSingleton<IMock, Mock>();
-            services.AddSingleton<IUnitOfWork, UnitOfWork>();
-            services.AddSingleton<ContextEntity>();
+            services.AddTransient<BSATaskContext>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IProjectService, ProjectService>();
             services.AddTransient<ITaskService, TaskService>();
             services.AddTransient<ITeamService, TeamService>();
@@ -27,8 +27,8 @@ namespace BSATask.WebAPI.ServiceExtensions
             services.AddAutoMapper(cfg =>
             {
                 cfg.AddProfile<ProjectProfile>();
-                cfg.AddProfile<TeamProfile>();
                 cfg.AddProfile<TaskProfile>();
+                cfg.AddProfile<TeamProfile>();
                 cfg.AddProfile<UserProfile>();
             },
             Assembly.GetExecutingAssembly());

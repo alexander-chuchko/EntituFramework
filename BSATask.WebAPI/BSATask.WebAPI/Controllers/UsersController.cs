@@ -31,7 +31,7 @@ namespace BSATask.WebAPI.Controllers
                 return BadRequest();
             }
 
-            var user = _userService.GetUserById(id - 1);
+            var user = _userService.GetUserById(id);
 
             if (user == null)
             {

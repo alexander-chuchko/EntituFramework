@@ -1,20 +1,21 @@
-﻿using BSATask.DAL.Interfaces;
+﻿using BSATask.DAL.Context;
+using BSATask.DAL.Interfaces;
 using BSATask.DAL.Services.Repositories;
 
 namespace BSATask.DAL.Services
 {
     public class UnitOfWork : IDisposable, IUnitOfWork
     {
-        private ContextEntity _contextEntity;
+        private readonly BSATaskContext _bSATaskContext;
         private UsersRepository _users;
         private TasksRepository _tasks;
         private ProjectsRepository _projects;
         private TeamsRepository _teams;
         private bool disposed = false;
 
-        public UnitOfWork(ContextEntity contextEntity)
+        public UnitOfWork(BSATaskContext bSATaskContext)
         {
-            _contextEntity = contextEntity;
+            _bSATaskContext = bSATaskContext;
         }
 
         public UsersRepository Users
@@ -23,7 +24,7 @@ namespace BSATask.DAL.Services
             {
                 if (_users == null)
                 {
-                    _users = new UsersRepository(_contextEntity);
+                    _users = new UsersRepository(_bSATaskContext);
                 }
                 return _users;
             }
@@ -35,7 +36,7 @@ namespace BSATask.DAL.Services
             {
                 if (_tasks == null)
                 {
-                    _tasks = new TasksRepository(_contextEntity);
+                    _tasks = new TasksRepository(_bSATaskContext);
                 }
                 return _tasks;
             }
@@ -47,7 +48,7 @@ namespace BSATask.DAL.Services
             {
                 if (_projects == null)
                 {
-                    _projects = new ProjectsRepository(_contextEntity);
+                    _projects = new ProjectsRepository(_bSATaskContext);
                 }
                 return _projects;
             }
@@ -59,7 +60,7 @@ namespace BSATask.DAL.Services
             {
                 if (_teams == null)
                 {
-                    _teams = new TeamsRepository(_contextEntity);
+                    _teams = new TeamsRepository(_bSATaskContext);
                 }
                 return _teams;
             }
@@ -67,7 +68,7 @@ namespace BSATask.DAL.Services
 
         public void Commit()
         {
-            //Write an implementation to save to a database or file
+            _bSATaskContext.SaveChanges();
         }
 
         public void Dispose()
@@ -82,7 +83,7 @@ namespace BSATask.DAL.Services
             {
                 if (disposing)
                 {
-                    _contextEntity.Dispose();
+                    _bSATaskContext.Dispose();
                 }
                 disposed = true;
             }

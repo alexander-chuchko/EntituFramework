@@ -1,7 +1,9 @@
-﻿namespace BSATask.DAL.Services.Repositories
+﻿using BSATask.DAL.Context;
+
+namespace BSATask.DAL.Services.Repositories
 {
     public class UsersRepository : BaseRepository
     {
-        public UsersRepository(ContextEntity contextEntity) : base(contextEntity) { }
+        public UsersRepository(BSATaskContext bSATaskContext) : base(bSATaskContext) { }
     }
 }

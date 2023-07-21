@@ -30,7 +30,7 @@ namespace BSATask.WebAPI.Controllers
                 return BadRequest();
             }
 
-            var teams = _teamService.GetTeamById(id - 1);
+            var teams = _teamService.GetTeamById(id);
 
             if (teams == null)
             {
@@ -46,9 +46,9 @@ namespace BSATask.WebAPI.Controllers
         {
             try
             {
-                _teamService.AddTeam(teamDTO);
+                var addedTeamDTO = _teamService.AddTeam(teamDTO);
 
-                return CreatedAtRoute("GetById", new { id = teamDTO.Id }, teamDTO);
+                return CreatedAtRoute("GetById", new { id = addedTeamDTO.Id }, addedTeamDTO);
             }
             catch (Exception ex)
             {

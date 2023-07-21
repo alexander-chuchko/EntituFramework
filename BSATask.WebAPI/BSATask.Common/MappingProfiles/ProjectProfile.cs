@@ -10,6 +10,5 @@ namespace BSATask.Common.MappingProfiles
 
             CreateMap<DTO.ProjectDTO, DAL.Entities.Project>();
         }
-        
     }
 }
