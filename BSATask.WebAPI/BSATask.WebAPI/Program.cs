@@ -1,5 +1,6 @@
 using BSATask.DAL.Context;
 using BSATask.WebAPI.ServiceExtensions;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -14,12 +15,14 @@ builder.Services.AddSwaggerGen();
 // Call the custom service registration method
 builder.Services.RegisterCustomServices();
 builder.Services.RegisterAutoMapper();
-
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-    .Build();
-string connectionString = configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<BSATaskContext>(options => options.UseSqlServer(connectionString));
+.Build();
+
+
+var migrationAssembly = typeof(BSATaskContext).Assembly.GetName().Name;
+builder.Services.AddDbContext<BSATaskContext>(options =>
+    options.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"], opt => opt.MigrationsAssembly(migrationAssembly)));
 
 var app = builder.Build();
 

@@ -4,7 +4,7 @@
     {
         public int ProjectId { get; set; }
 
-        public int PerformerId { get; set; }
+        public int UserId { get; set; }
 
         public string? Name { get; set; }
 

@@ -1,21 +1,20 @@
 ﻿namespace BSATask.DAL.Entities;
 
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
+[Table("Tasks")]
 public class Task : DAL.EntityBase
 {
-    [JsonProperty("projectId")] 
     public int ProjectId { get; set; }
-    [JsonProperty("performerId")]
-    public int PerformerId { get; set; }
-    [JsonProperty("name")]
+    public int? UserId { get; set; }
+    [StringLength(20, MinimumLength = 3)]
     public string? Name { get; set; }
-    [JsonProperty("description")]
     public string? Description { get; set; }
-    [JsonProperty("state")]
     public TaskState State { get; set; }
-    [JsonProperty("createdAt")]
-    public DateTime CreatedAt { get; set; }
-    [JsonProperty("finishedAt")]
+    public DateTime? CreatedAt { get; set; }
     public DateTime? FinishedAt { get; set; }
+    public User? User { get; set; }
+    public Project? Project { get; set; }
 }

@@ -14,6 +14,7 @@ E:\Library\AcademyBinary\AcademiBinary 2023\Projects\project-structure\BSATask.W
 E:\Library\AcademyBinary\AcademiBinary 2023\Projects\project-structure\BSATask.WebAPI\BSATask.Common\obj\Debug\net6.0\BSATask.Common.pdb
 E:\Library\AcademyBinary\AcademiBinary 2023\Projects\project-structure\BSATask.WebAPI\BSATask.Common\obj\Debug\net6.0\ref\BSATask.Common.dll
 E:\Library\AcademyBinary\AcademiBinary 2023\Projects\ef\BSATask.WebAPI\BSATask.Common\bin\Debug\net6.0\BSATask.Common.deps.json
+E:\Library\AcademyBinary\AcademiBinary 2023\Projects\ef\BSATask.WebAPI\BSATask.Common\bin\Debug\net6.0\BSATask.Common.runtimeconfig.json
 E:\Library\AcademyBinary\AcademiBinary 2023\Projects\ef\BSATask.WebAPI\BSATask.Common\bin\Debug\net6.0\BSATask.Common.dll
 E:\Library\AcademyBinary\AcademiBinary 2023\Projects\ef\BSATask.WebAPI\BSATask.Common\bin\Debug\net6.0\BSATask.Common.pdb
 E:\Library\AcademyBinary\AcademiBinary 2023\Projects\ef\BSATask.WebAPI\BSATask.Common\bin\Debug\net6.0\BSATask.DAL.dll
@@ -27,4 +28,5 @@ E:\Library\AcademyBinary\AcademiBinary 2023\Projects\ef\BSATask.WebAPI\BSATask.C
 E:\Library\AcademyBinary\AcademiBinary 2023\Projects\ef\BSATask.WebAPI\BSATask.Common\obj\Debug\net6.0\BSATask.Common.dll
 E:\Library\AcademyBinary\AcademiBinary 2023\Projects\ef\BSATask.WebAPI\BSATask.Common\obj\Debug\net6.0\refint\BSATask.Common.dll
 E:\Library\AcademyBinary\AcademiBinary 2023\Projects\ef\BSATask.WebAPI\BSATask.Common\obj\Debug\net6.0\BSATask.Common.pdb
+E:\Library\AcademyBinary\AcademiBinary 2023\Projects\ef\BSATask.WebAPI\BSATask.Common\obj\Debug\net6.0\BSATask.Common.genruntimeconfig.cache
 E:\Library\AcademyBinary\AcademiBinary 2023\Projects\ef\BSATask.WebAPI\BSATask.Common\obj\Debug\net6.0\ref\BSATask.Common.dll

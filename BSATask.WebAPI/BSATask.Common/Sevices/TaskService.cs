@@ -21,21 +21,12 @@ namespace BSATask.Common.Sevices
         public IEnumerable<TaskDTO> GetTasks()
         {
             IEnumerable<TaskDTO> tasksDTO = null;
-            try
-            {
 
-                var tasks = _unitOfWork.Tasks.GetAll<DAL.Entities.Task>();
-                tasksDTO = _mapper.Map<IEnumerable<TaskDTO>>(tasks);
-            }
-            catch (Exception ex)
-            { 
-            
-            }
-
+            var tasks = _unitOfWork.Tasks.GetAll<DAL.Entities.Task>();
+            tasksDTO = _mapper.Map<IEnumerable<TaskDTO>>(tasks);
 
             return tasksDTO;
         }
-
 
         public TaskDTO GetTaskById(int id)
         {
