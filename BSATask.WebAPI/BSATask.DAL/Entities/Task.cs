@@ -9,7 +9,7 @@ public class Task : DAL.EntityBase
 {
     public int ProjectId { get; set; }
     public int? UserId { get; set; }
-    [StringLength(20, MinimumLength = 3)]
+    [StringLength(64, MinimumLength = 3)]
     public string? Name { get; set; }
     public string? Description { get; set; }
     public TaskState State { get; set; }

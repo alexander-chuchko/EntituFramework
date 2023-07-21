@@ -30,7 +30,7 @@ namespace BSATask.WebAPI.Controllers
                 return BadRequest();
             }
 
-            var task = _taskService.GetTaskById(id - 1);
+            var task = _taskService.GetTaskById(id);
 
             if (task == null)
             {
@@ -46,7 +46,7 @@ namespace BSATask.WebAPI.Controllers
         {
             try
             {
-                _taskService.AddTask(taskDTO); //_unitOfWork.Tasks.Insert(task);
+                _taskService.AddTask(taskDTO);
 
                 return CreatedAtRoute("GetById", new { id = taskDTO.Id }, taskDTO);
             }

@@ -12,7 +12,7 @@ public class Team : EntityBase
         Users = new List<User>();
         Projects = new List<Project>();
     }
-    [StringLength(20, MinimumLength = 3)]
+    [StringLength(64, MinimumLength = 3)]
     public string? Name { get; set; }
 
     public DateTime CreatedAt { get; set; }

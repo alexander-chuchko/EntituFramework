@@ -16,13 +16,16 @@ namespace BSATask.Common.Sevices
             _mapper = mapper;
         }
 
-        public void AddTeam(TeamDTO teamDTO)
+        public TeamDTO AddTeam(TeamDTO teamDTO)
         {
             if (teamDTO != null)
             {
                 var team = _mapper.Map<DAL.Entities.Team>(teamDTO);
                 _unitOfWork.Teams.Insert<DAL.Entities.Team>(team);
+                _unitOfWork.Commit();
+                return teamDTO;
             }
+            return null;
         }
 
         public TeamDTO GetTeamById(int id)
@@ -54,6 +57,7 @@ namespace BSATask.Common.Sevices
             {
                 var team = _mapper.Map<DAL.Entities.Team>(teamDTO);
                 _unitOfWork.Teams.Update<DAL.Entities.Team>(team);
+                _unitOfWork.Commit();
             }
         }
 
@@ -63,6 +67,7 @@ namespace BSATask.Common.Sevices
             if (team != null)
             {
                 _unitOfWork.Teams.Delete<DAL.Entities.Team>(id);
+                _unitOfWork.Commit();
             }
         }
     }

@@ -45,6 +45,7 @@ namespace BSATask.Common.Sevices
             {
                 var project = _mapper.Map<DAL.Entities.Project>(projectDTO);
                 _unitOfWork.Projects.Insert<DAL.Entities.Project>(project);
+                _unitOfWork.Commit();
             }
         }
 
@@ -55,6 +56,7 @@ namespace BSATask.Common.Sevices
             {
                 var project = _mapper.Map<Project>(projectDTO);
                 _unitOfWork.Projects.Update<Project>(project);
+                _unitOfWork.Commit();
             }
         }
 
@@ -65,6 +67,7 @@ namespace BSATask.Common.Sevices
             {
                 var index = _unitOfWork.Projects.GetAll<Project>().ToList().IndexOf(project);
                 _unitOfWork.Projects.Delete<Project>(index);
+                _unitOfWork.Commit();
             }
         }
     }

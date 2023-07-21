@@ -2,9 +2,9 @@
 {
     public class TaskDTO : EntityBaseDTO
     {
-        public int ProjectId { get; set; }
+        public int? ProjectId { get; set; }
 
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
         public string? Name { get; set; }
 

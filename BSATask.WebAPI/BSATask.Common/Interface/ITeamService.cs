@@ -8,7 +8,7 @@ namespace BSATask.Common.Interface
         IEnumerable<DTO.TeamDTO> GetTeams();
         DTO.TeamDTO GetTeamById(int id);
 
-        void AddTeam(DTO.TeamDTO teamDTO);
+        TeamDTO AddTeam(TeamDTO teamDTO);
 
         void UpdateTeam(DTO.TeamDTO teamDTO);
 

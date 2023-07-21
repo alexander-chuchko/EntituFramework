@@ -47,6 +47,7 @@ namespace BSATask.Common.Sevices
             {
                 var task = _mapper.Map<DAL.Entities.Task>(taskDTO);
                 _unitOfWork.Tasks.Insert<DAL.Entities.Task>(task);
+                _unitOfWork.Commit();
             }
         }
 
@@ -57,6 +58,7 @@ namespace BSATask.Common.Sevices
             {
                 var task = _mapper.Map<DAL.Entities.Task>(taskDTO);
                 _unitOfWork.Tasks.Update<DAL.Entities.Task>(task);
+                _unitOfWork.Commit();
             }
         }
 
@@ -66,6 +68,7 @@ namespace BSATask.Common.Sevices
             if (task != null)
             {
                 _unitOfWork.Tasks.Delete<DAL.Entities.Task>(id);
+                _unitOfWork.Commit();
             }
         }
     }

@@ -15,7 +15,7 @@ public class Project : DAL.EntityBase
     public int? UserId { get; set; }
 
     public int? TeamId { get; set; }
-    [StringLength(20, MinimumLength = 3)]
+    [StringLength(64, MinimumLength = 3)]
     public string? Name { get; set; }
 
     public string? Description { get; set; }
