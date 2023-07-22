@@ -1,6 +1,7 @@
 ﻿using BSATask.Common.Interface;
 using Microsoft.AspNetCore.Mvc;
 using BSATask.Common.DTO;
+using BSATask.Common.Sevices;
 
 namespace BSATask.WebAPI.Controllers
 {
@@ -46,8 +47,20 @@ namespace BSATask.WebAPI.Controllers
         {
             try
             {
-                _projectService.AddProject(projectDTO);
-                return CreatedAtRoute("GetById", new { id = projectDTO.Id }, projectDTO);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var addedProjectDTO = _projectService.AddProject(projectDTO);
+                if (addedProjectDTO is not null)
+                {
+                    return CreatedAtAction(nameof(Add), new { id = addedProjectDTO.Id }, addedProjectDTO);
+                }
+                else
+                {
+                    return BadRequest("Failed to add the project.");
+                }
             }
             catch (Exception ex)
             {
