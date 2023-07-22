@@ -83,7 +83,7 @@ namespace BSATask.WebAPI.Controllers
                 return BadRequest();
             }
 
-            _projectService.DeleteProject(project.Id);
+            _projectService.DeleteProject(id);
 
             return NoContent();
         }
