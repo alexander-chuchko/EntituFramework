@@ -9,7 +9,7 @@ namespace BSATask.Common.Interface
         IEnumerable<DTO.ProjectDTO> GetProjects();
         ProjectDTO GetProjectById(int id);
 
-        void AddProject(ProjectDTO projectDTO);
+        ProjectDTO AddProject(ProjectDTO projectDTO);
 
         void UpdateProject(ProjectDTO projectDTO);
 

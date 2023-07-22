@@ -46,9 +46,20 @@ namespace BSATask.WebAPI.Controllers
         {
             try
             {
-                var addedTeamDTO = _teamService.AddTeam(teamDTO);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-                return CreatedAtRoute("GetById", new { id = addedTeamDTO.Id }, addedTeamDTO);
+                var addedTeamDTO = _teamService.AddTeam(teamDTO);
+                if (addedTeamDTO is not null)
+                {
+                    return CreatedAtAction(nameof(Add), new { id = addedTeamDTO.Id }, addedTeamDTO);
+                }
+                else
+                {
+                    return BadRequest("Failed to add the team.");
+                }
             }
             catch (Exception ex)
             {
@@ -78,17 +89,17 @@ namespace BSATask.WebAPI.Controllers
 
         //api/teams/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateTeam([FromBody] TeamDTO teamDTO)
+        public IActionResult UpdateTeam(int id, [FromBody] TeamDTO teamDTO)
         { 
-            var foundTeam = _teamService.GetTeams().FirstOrDefault(v => v.Id == teamDTO.Id);
+            var foundTeam = _teamService.GetTeams().FirstOrDefault(v => v.Id == id);
 
             if (foundTeam == null)
             {
-                return NotFound($"Team with ID {teamDTO.Id} not found.");
+                return NotFound($"Team with ID {id} not found.");
             }
-            _teamService.UpdateTeam(foundTeam);
+            _teamService.UpdateTeam(teamDTO);
 
-            return Ok(foundTeam);
+            return Ok(teamDTO);
         }
     }
 }

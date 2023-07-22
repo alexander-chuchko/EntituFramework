@@ -8,7 +8,7 @@ namespace BSATask.Common.Interface
         IEnumerable<DTO.TaskDTO> GetTasks();
         DTO.TaskDTO GetTaskById(int id);
 
-        void AddTask(DTO.TaskDTO taskDTO);
+        TaskDTO AddTask(TaskDTO taskDTO);
         void UpdateTask(DTO.TaskDTO taskDTO);
 
         void DeleteTask(int id);

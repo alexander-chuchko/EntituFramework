@@ -6,7 +6,7 @@
 
         IEnumerable<T> GetAll<T>() where T : class, DAL.IEntityBase, new();
 
-        T Insert<T>(T entity) where T : class, IEntityBase, new();
+        void Insert<T>(T entity) where T : class, IEntityBase, new();
 
         void Update<T>(T entity) where T : class, DAL.IEntityBase, new();
 

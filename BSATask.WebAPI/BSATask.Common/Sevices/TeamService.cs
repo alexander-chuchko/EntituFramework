@@ -23,7 +23,8 @@ namespace BSATask.Common.Sevices
                 var team = _mapper.Map<DAL.Entities.Team>(teamDTO);
                 _unitOfWork.Teams.Insert<DAL.Entities.Team>(team);
                 _unitOfWork.Commit();
-                return teamDTO;
+                var lastAddedTeam = _unitOfWork.Teams.GetAll<DAL.Entities.Team>().ToList().LastOrDefault();
+                return _mapper.Map<TeamDTO>(lastAddedTeam);
             }
             return null;
         }
