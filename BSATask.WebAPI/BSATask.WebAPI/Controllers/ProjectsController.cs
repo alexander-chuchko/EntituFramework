@@ -88,11 +88,12 @@ namespace BSATask.WebAPI.Controllers
             return NoContent();
         }
 
+
         //api/projects/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateTeam([FromBody] ProjectDTO projectDTO)
+        public IActionResult UpdateTeam(int id, [FromBody] ProjectDTO projectDTO)
         {
-            var foundProject = _projectService.GetProjects().FirstOrDefault(t => t.Id == projectDTO.Id);
+            var foundProject = _projectService.GetProjects().FirstOrDefault(t => t.Id == id);
 
             if (foundProject == null)
             {

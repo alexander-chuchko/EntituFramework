@@ -92,9 +92,9 @@ namespace BSATask.WebAPI.Controllers
 
         //api/users/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateTeam([FromBody] UserDTO userDTO)
+        public IActionResult UpdateTeam(int id, [FromBody] UserDTO userDTO)
         {
-            var foundUser = _userService.GetUsers().FirstOrDefault(t => t.Id == userDTO.Id);
+            var foundUser = _userService.GetUsers().FirstOrDefault(t => t.Id == id);
 
             if (foundUser == null)
             {

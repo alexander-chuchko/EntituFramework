@@ -89,9 +89,9 @@ namespace BSATask.WebAPI.Controllers
 
         //api/tasks/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateTeam([FromBody] TaskDTO taskDTO)
+        public IActionResult UpdateTeam(int id, [FromBody] TaskDTO taskDTO)
         {
-            var foundTasks = _taskService.GetTasks().FirstOrDefault(t => t.Id ==taskDTO.Id);
+            var foundTasks = _taskService.GetTasks().FirstOrDefault(t => t.Id == id);
 
             if (foundTasks == null)
             {
