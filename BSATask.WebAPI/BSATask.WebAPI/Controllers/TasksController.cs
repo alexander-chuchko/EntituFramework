@@ -95,12 +95,12 @@ namespace BSATask.WebAPI.Controllers
 
             if (foundTasks == null)
             {
-                return NotFound($"Task with ID {taskDTO.Id} not found.");
+                return NotFound($"Task with ID {id} not found.");
             }
 
-            _taskService.UpdateTask(foundTasks);
+            _taskService.UpdateTask(taskDTO);
 
-            return Ok(foundTasks);
+            return Ok(taskDTO);
         }
     }
 }

@@ -97,7 +97,7 @@ namespace BSATask.WebAPI.Controllers
 
             if (foundProject == null)
             {
-                return NotFound($"Project with ID {projectDTO.Id} not found.");
+                return NotFound($"Project with ID {id} not found.");
             }
 
             _projectService.UpdateProject(projectDTO);

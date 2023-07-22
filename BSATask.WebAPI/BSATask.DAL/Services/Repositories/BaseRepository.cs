@@ -1,7 +1,5 @@
 ﻿using BSATask.DAL.Context;
 using BSATask.DAL.Interfaces;
-using Microsoft.EntityFrameworkCore;
-
 
 namespace BSATask.DAL.Services.Repositories
 {
