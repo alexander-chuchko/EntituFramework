@@ -141,7 +141,7 @@ namespace BSATask.UI
 
             if (Validation.IsValidNumber(id))
             {
-                var team = _apiService.GetByIdTaskAsync(id).GetAwaiter().GetResult();
+                var team = _apiService.GetByIdTeamAsync(id).GetAwaiter().GetResult();
                 if (team != null)
                 {
                     Console.WriteLine($"\t{nameof(team.Id)} : {team.Id}\n\t" +

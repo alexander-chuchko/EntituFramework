@@ -66,11 +66,10 @@ namespace BSATask.Common.Sevices
 
         public void DeleteProject(int id)
         {
-            var project = _unitOfWork.Projects.GetAll<Project>().FirstOrDefault(v => v.Id == id);
-            if (project!=null) 
+            var team = _unitOfWork.Projects.GetAll<DAL.Entities.Project>().FirstOrDefault(v => v.Id == id);
+            if (team != null)
             {
-                var index = _unitOfWork.Projects.GetAll<Project>().ToList().IndexOf(project);
-                _unitOfWork.Projects.Delete<Project>(index);
+                _unitOfWork.Projects.Delete<DAL.Entities.Project>(id);
                 _unitOfWork.Commit();
             }
         }
