@@ -41,14 +41,18 @@ namespace BSATask.Common.Sevices
             return taskDTO;
         }
 
-        public void AddTask(TaskDTO taskDTO)
+        public TaskDTO AddTask(TaskDTO taskDTO)
         {
             if (taskDTO != null)
             {
                 var task = _mapper.Map<DAL.Entities.Task>(taskDTO);
                 _unitOfWork.Tasks.Insert<DAL.Entities.Task>(task);
                 _unitOfWork.Commit();
+
+                var lastAddedTask = _unitOfWork.Teams.GetAll<DAL.Entities.Task>().ToList().LastOrDefault();
+                return _mapper.Map<TaskDTO>(lastAddedTask);
             }
+            return null;
         }
 
         public void UpdateTask(TaskDTO taskDTO)
@@ -73,3 +77,15 @@ namespace BSATask.Common.Sevices
         }
     }
 }
+
+/*
+
+
+
+
+
+
+
+
+ 
+ */

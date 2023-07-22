@@ -39,14 +39,18 @@ namespace BSATask.Common.Sevices
             return projectDTO;
         }
 
-        public void AddProject(ProjectDTO projectDTO)
+        public ProjectDTO AddProject(ProjectDTO projectDTO)
         {
             if (projectDTO != null)
             {
                 var project = _mapper.Map<DAL.Entities.Project>(projectDTO);
                 _unitOfWork.Projects.Insert<DAL.Entities.Project>(project);
                 _unitOfWork.Commit();
+                var lastAddedTeam = _unitOfWork.Teams.GetAll<DAL.Entities.Project>().ToList().LastOrDefault();
+                return _mapper.Map<ProjectDTO>(lastAddedTeam);
             }
+
+            return null;
         }
 
         public void UpdateProject(ProjectDTO projectDTO)

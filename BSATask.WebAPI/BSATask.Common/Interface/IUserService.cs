@@ -1,4 +1,6 @@
 ﻿
+using BSATask.Common.DTO;
+
 namespace BSATask.Common.Interface
 {
     public interface IUserService
@@ -6,7 +8,7 @@ namespace BSATask.Common.Interface
         IEnumerable<DTO.UserDTO> GetUsers();
         DTO.UserDTO GetUserById(int id);
 
-        void AddUser(DTO.UserDTO userDTO);
+        UserDTO AddUser(UserDTO userDTO);
         void UpdateUser(DTO.UserDTO userDTO);
 
         void DeleteUser(int id);

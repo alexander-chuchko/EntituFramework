@@ -14,8 +14,11 @@ namespace BSATask.DAL.Services.Repositories
         }
         public void Delete<T>(int id) where T : class, IEntityBase, new()
         {
-            var entity = new T { Id = id };
-            _bSATaskContext.Set<T>().Remove(entity);
+            var entity = _bSATaskContext.Set<T>().Find(id);
+            if (entity != null)
+            {
+                _bSATaskContext.Set<T>().Remove(entity);
+            }
         }
 
         public IEnumerable<T> GetAll<T>() where T : class, IEntityBase, new()
@@ -23,10 +26,9 @@ namespace BSATask.DAL.Services.Repositories
             return _bSATaskContext.Set<T>().ToList();
         }
 
-        public T Insert<T>(T entity) where T : class, IEntityBase, new()
+        public void Insert<T>(T entity) where T : class, IEntityBase, new()
         {
             _bSATaskContext.Set<T>().Add(entity);
-            return entity;
         }
 
         public T GetById<T>(int id) where T : class, IEntityBase, new()
@@ -36,7 +38,14 @@ namespace BSATask.DAL.Services.Repositories
 
         public void Update<T>(T entity) where T : class, IEntityBase, new()
         {
-            _bSATaskContext.Entry(entity).State = EntityState.Modified;
+            var existingEntity = _bSATaskContext.Set<T>().Find(entity.Id);
+
+            if (existingEntity == null)
+            {
+                throw new ArgumentException($"Entity with ID {entity.Id} not found in the database.");
+            }
+
+            _bSATaskContext.Entry(existingEntity).CurrentValues.SetValues(entity);
         }
     }
 }

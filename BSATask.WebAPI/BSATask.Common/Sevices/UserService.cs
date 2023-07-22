@@ -2,6 +2,7 @@
 using BSATask.Common.DTO;
 using BSATask.Common.Interface;
 using BSATask.DAL.Interfaces;
+using BSATask.DAL.Services;
 
 namespace BSATask.Common.Sevices
 {
@@ -16,14 +17,18 @@ namespace BSATask.Common.Sevices
             _mapper = mapper;
         }
 
-        public void AddUser(UserDTO userDTO)
+        public UserDTO AddUser(UserDTO userDTO)
         {
             if (userDTO != null)
             {
                 var user = _mapper.Map<DAL.Entities.User>(userDTO);
                 _unitOfWork.Users.Insert<DAL.Entities.User>(user);
                 _unitOfWork.Commit();
+
+                var lastAddedUser = _unitOfWork.Users.GetAll<DAL.Entities.User>().ToList().LastOrDefault();
+                return _mapper.Map<UserDTO>(lastAddedUser);
             }
+            return null;
         }
 
         public UserDTO GetUserById(int id)
