@@ -1,6 +1,7 @@
 ﻿using BSATask.Common.Interface;
 using BSATask.Common.DTO;
 using Microsoft.AspNetCore.Mvc;
+using BSATask.Common.Sevices;
 
 namespace BSATask.WebAPI.Controllers
 {
@@ -46,9 +47,20 @@ namespace BSATask.WebAPI.Controllers
         {
             try
             {
-                _taskService.AddTask(taskDTO);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-                return CreatedAtRoute("GetById", new { id = taskDTO.Id }, taskDTO);
+                var addedTaskDTO = _taskService.AddTask(taskDTO);
+                if (addedTaskDTO is not null)
+                {
+                    return CreatedAtAction(nameof(Add), new { id = addedTaskDTO.Id }, addedTaskDTO);
+                }
+                else
+                {
+                    return BadRequest("Failed to add the task.");
+                }
             }
             catch (Exception ex)
             {
@@ -77,9 +89,9 @@ namespace BSATask.WebAPI.Controllers
 
         //api/tasks/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateTeam([FromBody] TaskDTO taskDTO)
+        public IActionResult UpdateTeam(int id, [FromBody] TaskDTO taskDTO)
         {
-            var foundTasks = _taskService.GetTasks().FirstOrDefault(t => t.Id ==taskDTO.Id);
+            var foundTasks = _taskService.GetTasks().FirstOrDefault(t => t.Id == id);
 
             if (foundTasks == null)
             {

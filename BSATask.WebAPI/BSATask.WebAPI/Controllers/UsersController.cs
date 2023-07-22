@@ -2,6 +2,7 @@
 using BSATask.Common.DTO;
 using Microsoft.AspNetCore.Mvc;
 using BSATask.DAL.Entities;
+using BSATask.Common.Sevices;
 
 namespace BSATask.WebAPI.Controllers
 {
@@ -47,9 +48,20 @@ namespace BSATask.WebAPI.Controllers
         {
             try
             {
-                _userService.AddUser(userDTO);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-                return CreatedAtRoute("GetById", new { id = userDTO.Id }, userDTO);
+                var addedUserDTO = _userService.AddUser(userDTO);
+                if (addedUserDTO is not null)
+                {
+                    return CreatedAtAction(nameof(Add), new { id = addedUserDTO.Id }, addedUserDTO);
+                }
+                else
+                {
+                    return BadRequest("Failed to add the team.");
+                }
             }
             catch (Exception ex)
             {
@@ -80,9 +92,9 @@ namespace BSATask.WebAPI.Controllers
 
         //api/users/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateTeam([FromBody] UserDTO userDTO)
+        public IActionResult UpdateTeam(int id, [FromBody] UserDTO userDTO)
         {
-            var foundUser = _userService.GetUsers().FirstOrDefault(t => t.Id == userDTO.Id);
+            var foundUser = _userService.GetUsers().FirstOrDefault(t => t.Id == id);
 
             if (foundUser == null)
             {
