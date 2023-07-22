@@ -98,10 +98,10 @@ namespace BSATask.WebAPI.Controllers
 
             if (foundUser == null)
             {
-                return NotFound($"User with ID {userDTO.Id} not found.");
+                return NotFound($"User with ID {id} not found.");
             }
 
-            _userService.UpdateUser(foundUser); 
+            _userService.UpdateUser(userDTO); 
 
             return Ok(foundUser);
         }
